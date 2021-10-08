@@ -26,6 +26,12 @@ RUN apt-get install python3-colcon-common-extensions -y
 # Set all the envinorment variables
 ENV ROS_DOMAIN_ID=1
 ENV _colcon_cd_root=~/ros2_install
+
+RUN chmod +x "/opt/ros/foxy/setup.bash"
+RUN chmod +x "/usr/share/colcon_cd/function/colcon_cd.sh"
+RUN echo "/opt/ros/foxy/setup.bash" >> ~/.bashrc
+RUN echo "/usr/share/colcon_cd/function/colcon_cd.sh" >> ~/.bashrc
+
 # Install git
 RUN apt-get install -y git
 # Create the working directories
@@ -41,12 +47,16 @@ WORKDIR "/home/mocap"
 #    . install/setup.bash
 
 
-CMD source /opt/ros/foxy/setup.bash;\
-    source /usr/share/colcon_cd/function/colcon_cd.sh;\
-    git clone https://github.com/tud-cor-sr/ros2-mocap_optitrack.git ./src;\
-    colcon build;\
-    . install/setup.bash;\
-    ros2 launch ./src/launch/launch_y_up.py
+#CMD source /opt/ros/foxy/setup.bash;\
+#    source /usr/share/colcon_cd/function/colcon_cd.sh;\
+#    rm -r ./src;\
+#    mkdir ./src;\
+#    git clone https://github.com/tud-cor-sr/ros2-mocap_optitrack.git ./src;\
+#    colcon build;\
+#    . install/setup.bash;\
+#    ros2 launch ./src/launch/launch_y_up.py
 
-#RUN apt-get install -y iputils-ping
+RUN apt-get install -y iputils-ping
+
+
 #CMD ping 10.125.37.1;

@@ -7,6 +7,8 @@ To run the container move to the directory where the Dockerfile is located and b
 docker build --tag mocap .
 ```
 
+docker network create -d macvlan --subnet=10.125.37.0/24 --gateway=10.125.37.1 -o parent="Ethernet 5" mocap-net
+
 
 ## Run on Ubuntu
 To run the container move to the directory where the Dockerfile is located and log in as root user
