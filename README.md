@@ -9,7 +9,12 @@ docker build --tag mocap .
 
 
 ## Run on Ubuntu
-To run the container move to the directory where the Dockerfile is located and build the image with the command
+To run the container move to the directory where the Dockerfile is located and log in as root user
+```
+sudo -s
+```
+
+Build the image with the command
 ```
 docker build --tag mocap .
 ```
@@ -29,7 +34,7 @@ To specify more than one address pass as argument a map
   --aux-address={"PC1=10.125.37.1", "PC2=10.125.37.3"} \
 ```
 
-Finally just run the image with
+Finally, just run the image with
 ```
 sudo docker run -it --network mocap-net mocap
 ```
