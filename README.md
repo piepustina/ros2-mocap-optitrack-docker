@@ -24,3 +24,7 @@ docker network create -d macvlan \
   my-net
 ```
 Through the optional parameter --aux-address it is possible to specify a set of addresses already in use in the subnet, so as to avoid that the Docker container IP is assigned to a used address. For example, in the above command we assume that there are two devices connected to the network: the gateway, with address 10.125.37.2, and "WS", with address 10.125.37.1. 
+To specify more than one address pass as argument a map
+```
+  --aux-address={"PC1=10.125.37.1", "PC2=10.125.37.3"} \
+```
