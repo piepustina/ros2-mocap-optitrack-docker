@@ -32,20 +32,19 @@ RUN apt-get install -y git
 RUN mkdir /home/mocap /home/mocap/src 
 WORKDIR "/home/mocap"
 # Clone the repository for the motion capture system
-RUN git clone https://github.com/tud-cor-sr/ros2-mocap_optitrack.git ./src
-RUN ls -l ./src
-
+#RUN git clone https://github.com/tud-cor-sr/ros2-mocap_optitrack.git ./src
 
 # Build the packages
-RUN source /opt/ros/foxy/setup.bash;\
-    source /usr/share/colcon_cd/function/colcon_cd.sh;\
-    colcon build
+#RUN source /opt/ros/foxy/setup.bash;\
+#    source /usr/share/colcon_cd/function/colcon_cd.sh;\
+#    colcon build
 #    . install/setup.bash
 
 
 CMD source /opt/ros/foxy/setup.bash;\
     source /usr/share/colcon_cd/function/colcon_cd.sh;\
-#    colcon build;\
+    git clone https://github.com/tud-cor-sr/ros2-mocap_optitrack.git ./src;\
+    colcon build;\
     . install/setup.bash;\
     ros2 launch ./src/launch/launch_y_up.py
 
