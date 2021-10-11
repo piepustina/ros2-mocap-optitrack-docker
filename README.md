@@ -38,6 +38,6 @@ To specify more than one address pass as argument a map
 
 Finally, just run the image with
 ```
-sudo docker run -it --network mocap-net mocap
+sudo docker run -it --rm --network mocap-net mocap
 ```
 In the above command we specifu to run the container in interactive mode and with the just created network.
